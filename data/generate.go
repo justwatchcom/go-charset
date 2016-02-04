@@ -3,8 +3,8 @@
 // go run generate.go && go fmt
 
 // The generate-charset-data command generates the Go source code
-// for code.google.com/p/go-charset/data from the data files
-// found in code.google.com/p/go-charset/datafiles.
+// for github.com/justwatchcom/go-charset/data from the data files
+// found in github.com/justwatchcom/go-charset/datafiles.
 // It should be run in the go-charset root directory.
 // The resulting Go files will need gofmt'ing.
 package main
@@ -18,7 +18,7 @@ import (
 )
 
 type info struct {
-	Path    string
+	Path string
 }
 
 var tfuncs = template.FuncMap{
@@ -36,7 +36,7 @@ var tmpl = template.Must(template.New("").Funcs(tfuncs).Parse(`
 
 	package data
 	import (
-		"code.google.com/p/go-charset/charset"
+		"github.com/justwatchcom/go-charset/charset"
 		"io"
 		"io/ioutil"
 		"strings"
@@ -58,7 +58,7 @@ var docTmpl = template.Must(template.New("").Funcs(tfuncs).Parse(`
 	// data files as Go data. It registers the data with the charset
 	// package as a side effect of its import. To use:
 	//
-	//	import _ "code.google.com/p/go-charset"
+	//	import _ "github.com/justwatchcom/go-charset"
 	package {{basename .Package}}
 `))
 
@@ -74,7 +74,7 @@ func main() {
 	}
 	for _, name := range names {
 		writeFile("data_"+name+".go", tmpl, info{
-			Path:    filepath.Join(dataDir, name),
+			Path: filepath.Join(dataDir, name),
 		})
 	}
 }

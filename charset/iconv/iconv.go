@@ -17,7 +17,6 @@ package iconv
 //size_t iconv_error = (size_t)-1;
 import "C"
 import (
-	"code.google.com/p/go-charset/charset"
 	"errors"
 	"fmt"
 	"runtime"
@@ -25,6 +24,8 @@ import (
 	"syscall"
 	"unicode/utf8"
 	"unsafe"
+
+	"github.com/justwatchcom/go-charset/charset"
 )
 
 type iconvTranslator struct {
